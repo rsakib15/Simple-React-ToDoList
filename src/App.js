@@ -30,7 +30,7 @@ class App extends Component {
   }
 
   AddTask = (task) =>{
-    task.id = this.state.tasks.length + 1;
+    task.id = (((1+Math.random())*0x10000)|0).toString(16).substring(1);
     let tasks = [...this.state.tasks, task];
     this.setState({
       addNewButtonClicked: false,
@@ -39,7 +39,6 @@ class App extends Component {
   }
 
   DeleteTask = (id) =>{
-    console.log(id)
     let tasks = this.state.tasks.filter(task => {
       return task.id !== id
     });
@@ -60,7 +59,7 @@ class App extends Component {
                 <h1>To Do List</h1>
               </div>
               <div className="col company-details">
-                <button type="button" className="btn btn-primary addbutton" onClick={this.AddNewTaskHandler} addTask={this.AddTask}>Add New Task</button>
+                <button type="button" className="btn btn-success addbutton" onClick={this.AddNewTaskHandler} addTask={this.AddTask}>Add New Task</button>
               </div>
             </div>
           </header>

@@ -23,8 +23,9 @@ class AddTask extends Component{
 
   HandleSubmit(e){
     e.preventDefault();
-    console.log(this.state)
-    this.props.AddTask(this.state)
+    if(this.state.taskName!=null){
+      this.props.AddTask(this.state);
+    }
   }
 
   render() {
@@ -34,9 +35,7 @@ class AddTask extends Component{
     
     if(this.state.addNewButtonClicked == false){
       modalClass.push("displayHide");
-      return (
-        null
-      )
+      return (null);
     }
     else{
       modalClass.push('fade');
@@ -50,13 +49,13 @@ class AddTask extends Component{
                 <div className="modal-header">
                   <h5 className="modal-title" id="exampleModalLongTitle">Add new Task</h5>
                   <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true" onClick={this.props.action}>&times;</span>
+                    <span aria-hidden="true" onClick={this.props.closeModal}>&times;</span>
                   </button>
                 </div>
                 <div className="modal-body">
                     <label htmlFor="TASK DETAILS">Enter Task Details</label>
                     <div className="input-group mb-3">
-                      <input type="text" className="form-control" id="taskName" placeholder="" aria-label="" aria-describedby="basic-addon1" onChange={this.HandleChange}></input>
+                      <input type="text" className="form-control" id="taskName" placeholder="" aria-label="" aria-describedby="basic-addon1" onChange={this.HandleChange} ></input>
                     </div>
                   
                 </div>

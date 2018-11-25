@@ -1,6 +1,13 @@
 import React, { Component } from 'react';
 
 const Tasks = ({ tasks, deleteTask }) => {
+    if(tasks.length == 0){
+        return (
+            <div>
+                <h3 className="text-center" color="red">No Tasks</h3>
+            </div>
+        )
+    }
     return (
         <table border="0" cellSpacing="0" cellPadding="0">
             <thead>
